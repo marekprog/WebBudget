@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+    <body>
+        
+        <nav>
+            <ul class="menu">
+                <li><a href="income.html">Dodaj przychód</a></li>
+                <li><a href="expense.html">Dodaj wydatek</a></li>
+                <li><a href="#">Przeglądaj bilans</a></li>
+                <li><a href="#">Wyloguj się</a></li>
+                <li><a href="#">Ustawienia</a></li>     
+            </ul>
+                   
+        </nav>
+        <form action="index.html" method="post">
+                <div class="inputblock">
+                    <label>Kwota<input type="number"  step="0.1"></label>
+                    <label>Data przychodu<input type="date" ></label><br></br>                    
+                    <br></br>
+                    <label><input type="radio" name="kat" value="w" checked> Wynagrodzenie</label>
+                    <label><input type="radio" name="kat" value="o"> Odsetki bankowe</label>
+                    <label><input type="radio" name="kat" value="a"> Sprzedaz na allegro</label>
+                    <label><input type="radio" name="kat" value="i"> Inne</label>
+                    <br></br>
+                    <label>Komentarz<input type="text" ></label><br></br>
+                </div>
+                
+            </form>
+    </body>
+</html>

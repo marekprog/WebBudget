@@ -1,2 +1,105 @@
 
 
+#logo{
+    height:100%;
+}
+
+body {
+    background-color: #DBEEF5;
+    margin:0 !important;
+    
+}
+
+header {
+    margin-left: auto;
+    margin-right: auto;
+    width:1400px;
+    height: 50px;
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+    background-color:#BDC47E;
+    
+}
+header a {
+    text-decoration: none;
+    color:black;
+}
+header:hover{
+    background-color:#EEF79E
+}
+
+.actionpanel{
+
+    width:500px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+}
+
+#registration{
+    text-align: center;
+    padding:10px;
+    margin:10px;
+    background-color: #827CF7;
+    
+}
+#registration a {
+    text-decoration:none;
+}
+#registration:hover{
+    background-color: #F77B41;
+
+}
+
+#login{
+      text-align: center;
+      padding:10px;
+      margin:10px;
+      background-color: #8BF79B;
+
+}
+#login:hover{
+    background-color: #F77B41;
+}
+#login a{
+    text-decoration:none;
+}
+nav{
+    background-color: #F50000;
+    text-align: center;
+}
+.menu{
+    list-style-type: none;
+    margin:0;
+    padding: 10px;
+    min-height: 20px;
+    line-height: 300%;
+    
+}
+.menu > li{
+    display:inline-block;
+    padding-left: 20px;
+    padding-right:20px;
+    border-right: 2px dotted #1C6EA4;
+}
+.menu >li:first-child{
+    border-left: 2px dotted #1C6EA4;
+}
+.menu a{
+    color:#fff;
+    text-decoration: none;
+}
+.menu a:hover{
+    color: #1C6EA4;
+}
+
+.inputblock{
+    width:500px;
+    background-color: #49AD47;
+    padding:5px;
+    text-align: center;
+       
+}

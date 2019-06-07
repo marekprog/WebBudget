@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+    <body>
+        
+        <nav>
+            <ul class="menu">
+                <li><a href="income.html">Dodaj przychód</a></li>
+                <li><a href="expense">Dodaj wydatek</a></li>
+                <li><a href="#">Przeglądaj bilans</a></li>
+                <li><a href="#">Wyloguj się</a></li>
+                <li><a href="#">Ustawienia</a></li>     
+            </ul>
+                   
+        </nav>
+        <form action="index.html" method="post">
+                <div class="inputblock">
+                    <label>Kwota<input type="number"  step="0.1"></label><br></br>
+                    <label>Data wydatku<input type="date" ></label><br></br>
+                    <label for="sposobplatn">Sposob płatnosci</label>
+                    <select id="sposobplatn">
+                        <option value="g">Gotówka</option>
+                        <option value="d">Karta debetowa</option>
+                        <option value="k">Karta kredytowa</option>
+                    </select><br></br>
+                    <label for="kategoria">Kategoria</label>
+                    <select id="kategoria">
+                        <option name="kat[]" value="1">Jedzenie</option>
+                        <option name="kat[]" value="2">Mieszkanie</option>
+                        <option name="kat[]" value="3">Transport</option>
+                        <option name="kat[]" value="4">Telekomunikacja</option>
+                        <option name="kat[]" value="5">Opieka zdrowotna</option>
+                        <option name="kat[]" value="6">Ubranie</option>
+                        <option name="kat[]" value="7">Higiena</option>
+                        <option name="kat[]" value="8">Dzieci</option>
+                        <option name="kat[]" value="9">Rozrywka</option>
+                        <option name="kat[]" value="10">Wycieczka</option>
+                        <option name="kat[]" value="11">Szkolenia</option>
+                        <option name="kat[]" value="12">Książki</option>
+                        <option name="kat[]" value="13">Oszczędności</option>
+                        <option name="kat[]" value="14">Na złotą jesień, czyli emeryturę</option>
+                        <option name="kat[]" value="15">Spłata długów</option>
+                        <option name="kat[]" value="16">Darowizna</option>
+                        <option name="kat[]" value="17">Inne wydatki</option>
+                    </select><br></br>
+                    <label>Komentarz<input type="text" ></label><br></br>
+                </div>
+                
+            </form>
+    </body>
+</html>
