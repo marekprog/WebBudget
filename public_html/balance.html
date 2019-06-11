@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Bilans</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <script type="text/javascript" src="time.js" ></script>
+    </head>
+    <body>
+        <header><a href="mainMenu.html"><img id="logo" src="banknotes-xxl.png" alt="logo" align="left"></a></header>
+        <nav>
+            <ul class="menu">
+                <li><a href="income.html">Dodaj przychód</a></li>
+                <li><a href="expense.html">Dodaj wydatek</a></li>
+                <li><a href="balance.html">Przeglądaj bilans</a></li>
+                <li><a href="index.html">Wyloguj się</a></li>
+                <li><a href="#">Ustawienia</a></li>     
+            </ul>
+                   
+        </nav>
+        <div id="browsebalance">
+            <label for="balanceRange">Wybierz zakres dat</label>
+                    <select id="balanceRange">
+                        <option value="bm" selected="selected">Bieżący miesiąc</option>
+                        <option value="pm">Poprzedni miesiąc</option>
+                        <option value="br">Bieżący rok</option>
+                        <option value="ns" onclick="showDiv()">niestandardowe</option>
+                    </select><br></br>
+            <div id="dateRange" style="display:none;">
+                Wybierz zakres dat:
+                <br></br>
+                <label >Początek<input type="date" name="today" id="today"></label>
+                <label >Koniec<input type="date" name="today" id="today"></label>
+            </div>
+        <button type="submit">Zatwierdź</button>          
+        </div>
+        <div>
+            <div id="incomes">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kategoria</th>
+                            <th>Suma przychodów</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Suma</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <td>Wynagrodzenie</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Odsetki Bankowe</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Sprzedaż na allegro</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Inne</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>                
+            </div>
+            <div id="expenses">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kategoria</th>
+                            <th>Suma wydatków</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Suma</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <td>Jedzenie</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Mieszkanie</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Transport</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Telekomunikacja</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Opieka zdrowotna</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Ubranie</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Higiena</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Dzieci</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Rozrywka</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Wycieczka</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Szkolenia</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Książki</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Oszczędności</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Na złotą jesień, czyli emeryturę</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Spłata długów</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Darowizna</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Inne wydatki</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+              
+    </body>
+</html>
