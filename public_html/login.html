@@ -10,26 +10,19 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link rel="stylesheet" type="text/css" href="css/fontello.css"/>
+
     </head>
     <body>
         <header><a href="index.html"><img id="logo" src="banknotes-xxl.png" alt="logo" align="left">Logowanie</a></header>
-        <div class="actionpanel">
+        <div class="inputblock">
             <form action="index.html" method="post">
-                <div class="inputblock">
-                    Login lub e-mail<br></br>
-                    <label><input type="text" placeholder="nick lub imie"></label>
-                </div>
-                <div class="inputblock">
-                    Hasło<br></br>
-                    <label><input type="password"></label>
-                </div>                
-                <div class="inputblock">
-                    
-                </div>
-                
-            </form>
-            <form action="mainMenu.html" ><input type="submit" value="OK" /></form>
-                   
+                <label class="entry"><i class="icon-user"></i><input type="text" placeholder="użytkownik lub email"></label>
+                <br></br>
+                <label class="entry"><i class="icon-key"></i><input type="text" placeholder="hasło"></label>
+                <br></br>
+            </form>                
+            <form action="mainMenu.html" class="entry"><input type="submit" value="Zaloguj" /></form>
         </div>
     </body>
 </html>

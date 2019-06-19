@@ -24,23 +24,8 @@ and open the template in the editor.
             </ul>
                    
         </nav>
-        <div id="browsebalance">
-            <label for="balanceRange">Wybierz zakres dat</label>
-                    <select id="balanceRange">
-                        <option value="bm" selected="selected">Bieżący miesiąc</option>
-                        <option value="pm">Poprzedni miesiąc</option>
-                        <option value="br">Bieżący rok</option>
-                        <option value="ns" onclick="showDiv()">niestandardowe</option>
-                    </select><br></br>
-            <div id="dateRange" style="display:none;">
-                Wybierz zakres dat:
-                <br></br>
-                <label >Początek<input type="date" name="today" id="today"></label>
-                <label >Koniec<input type="date" name="today" id="today"></label>
-            </div>
-        <button type="submit">Zatwierdź</button>          
-        </div>
-        <div>
+        
+        <section>
             <div id="incomes">
                 <table>
                     <thead>
@@ -161,7 +146,23 @@ and open the template in the editor.
                     </tbody>
                 </table>
             </div>
-        </div>
+        </section>
+        <aside>
+            <label for="balanceRange">Wybierz zakres dat</label>
+                    <select id="balanceRange">
+                        <option value="bm" selected="selected">Bieżący miesiąc</option>
+                        <option value="pm">Poprzedni miesiąc</option>
+                        <option value="br">Bieżący rok</option>
+                        <option value="ns" onclick="showDiv()">niestandardowe</option>
+                    </select><br></br>
+            <div id="dateRange" style="display:none;">
+                Wybierz zakres dat:
+                <br></br>
+                <label >Początek<input type="date" name="today" id="today"></label>
+                <label >Koniec<input type="date" name="today" id="today"></label>
+            </div>
+        <button type="submit">Zatwierdź</button>          
+        </aside>
               
     </body>
 </html>

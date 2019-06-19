@@ -11,31 +11,35 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <script type="text/javascript" src="time.js" ></script>
+        <link rel="stylesheet" type="text/css" href="css/fontello.css"/>
+
     </head>
     <body onload="setToday();">
         <header><a href="mainMenu.html"><img id="logo" src="banknotes-xxl.png" alt="logo" align="left"></a></header>
         <nav>
             <ul class="menu">
-                <li><a href="income.html">Dodaj przychód</a></li>
-                <li><a href="expense.html">Dodaj wydatek</a></li>
-                <li><a href="balance.html">Przeglądaj bilans</a></li>
-                <li><a href="index.html">Wyloguj się</a></li>
-                <li><a href="#">Ustawienia</a></li>     
+                <li><a href="income.html"><i class="icon-down-big"></i> Dodaj przychód</a></li>
+                <li><a href="expense.html"><i class="icon-up-big"></i> Dodaj wydatek</a></li>
+                <li><a href="balance.html"><i class="icon-doc-text"></i> Przeglądaj bilans</a></li>
+                <li><a href="index.html"><i class="icon-logout"></i>Wyloguj się</a></li>
+                <li><a href="#"><i class="icon-cog"></i> Ustawienia</a></li>    
             </ul>
                    
         </nav>
         <form action="index.html" method="post">
-                <div class="inputblock">
-                    <label>Kwota<input type="number" step="0.1"></label> <br></br>
-                    <label >Data wydatku<input type="date" name="today" id="today"></label><br></br>
-                    <label for="sposobplatn">Sposob płatnosci</label>
-                    <select id="sposobplatn">
+                <div class="inputblock"><i class="icon-up-big"></i>Dodaj wydatek<br></br>
+
+                    <label class="entry"><i class="icon-dollar"></i><input type="number" step="0.1" placeholder="podaj kwotę"></label> <br></br>                   
+                    <label class="entry"><i class="icon-calendar"></i><input type="date" name="today" id="today"></label><br></br>
+                    <label for="sposobplatn" class="entry"><i class="icon-wallet"></i>
+                    <select id="sposobplatn" class="entry">
                         <option value="g">Gotówka</option>
                         <option value="d">Karta debetowa</option>
                         <option value="k">Karta kredytowa</option>
-                    </select><br></br>
-                    <label for="kategoria">Kategoria</label>
-                    <select id="kategoria">
+                    </select>
+                        </label><br></br>
+                    <label for="kategoria" class="entry"><i class="icon-tag"></i>
+                    <select class="entry">
                         <option name="kat[]" value="1">Jedzenie</option>
                         <option name="kat[]" value="2">Mieszkanie</option>
                         <option name="kat[]" value="3">Transport</option>
@@ -53,9 +57,10 @@ and open the template in the editor.
                         <option name="kat[]" value="15">Spłata długów</option>
                         <option name="kat[]" value="16">Darowizna</option>
                         <option name="kat[]" value="17">Inne wydatki</option>
-                    </select><br></br>
-                    <label>Komentarz<input type="text" ></label><br></br>
-                     <button type="submit">Zatwierdź</button>
+                    </select>
+                        </label><br></br>
+                    <label class="entry"><i class="icon-comment-empty"></i><input type="text" placeholder="komentarz" ></label><br></br>
+                     <button type="submit" class="entry">Zatwierdź</button>
                 </div>
                
             </form>

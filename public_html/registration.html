@@ -10,26 +10,22 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link rel="stylesheet" type="text/css" href="css/fontello.css"/>
+
     </head>
     <body>
         <header><a href="index.html"><img id="logo" src="banknotes-xxl.png" alt="logo" align="left">Rejestracja</a></header>
-        <div class="actionpanel">
-            <form action="index.html" method="post">
-                <div class="inputblock">
-                    Imie<br></br>
-                    <label><input type="text" placeholder="nick lub imie"></label>
-                </div>
-                <div class="inputblock">
-                    Adres e-mail<br></br>
-                    <label><input type="email" placeholder="email"></label>
-                </div>
-                <div class="inputblock">
-                    Hasło<br></br>
-                    <label><input type="password"></label>
-                </div>
-                <div class="inputblock">
-                    <button type="submit">wyslij</button>
-                </div>
+        <div class="inputblock">
+            <form action="index.html" method="post">                    
+                    <label class="entry"><i class="icon-user"></i><input type="text" placeholder="nick lub imię"></label>
+                    <br></br>
+                    <label class="entry"><i class="icon-mail"></i><input type="email" placeholder="Adres e-mail"></label>
+                    <br></br>
+                    <label class="entry"><i class="icon-key"></i><input type="password" placeholder="hasło"></label>
+                    <br></br>
+                    <label class="entry"><i class="icon-key"></i><input type="password" placeholder="powtórz hasło"></label>
+                    <br></br>
+                    <button type="submit" class="entry">Zarejestruj</button>
                 
             </form>
                    
