@@ -10,5 +10,7 @@ function setToday()
 }
 
 function showDiv() {
-   document.getElementById('dateRange').style.display = "block";
+   document.getElementById('expenses').style.display = "block";
+   document.getElementById('incomes').style.display = "block";
 }
+

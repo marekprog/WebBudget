@@ -32,40 +32,77 @@ and open the template in the editor.
 
         </nav>
         <form action="index.html" method="post">
-                <div class="inputblock"><i class="icon-up-big"></i>Dodaj wydatek<br></br>
-
-                    <label class="entry"><i class="icon-dollar"></i><input type="number" step="0.1" placeholder="podaj kwotę"></label> <br></br>                   
-                    <label class="entry"><i class="icon-calendar"></i><input type="date" name="today" id="today"></label><br></br>
-                    <label for="sposobplatn" class="entry"><i class="icon-wallet"></i>
-                    <select id="sposobplatn" class="entry">
-                        <option value="g">Gotówka</option>
-                        <option value="d">Karta debetowa</option>
-                        <option value="k">Karta kredytowa</option>
-                    </select>
-                        </label><br></br>
-                    <label for="kategoria" class="entry"><i class="icon-tag"></i>
-                    <select class="entry">
-                        <option name="kat[]" value="1">Jedzenie</option>
-                        <option name="kat[]" value="2">Mieszkanie</option>
-                        <option name="kat[]" value="3">Transport</option>
-                        <option name="kat[]" value="4">Telekomunikacja</option>
-                        <option name="kat[]" value="5">Opieka zdrowotna</option>
-                        <option name="kat[]" value="6">Ubranie</option>
-                        <option name="kat[]" value="7">Higiena</option>
-                        <option name="kat[]" value="8">Dzieci</option>
-                        <option name="kat[]" value="9">Rozrywka</option>
-                        <option name="kat[]" value="10">Wycieczka</option>
-                        <option name="kat[]" value="11">Szkolenia</option>
-                        <option name="kat[]" value="12">Książki</option>
-                        <option name="kat[]" value="13">Oszczędności</option>
-                        <option name="kat[]" value="14">Na złotą jesień, czyli emeryturę</option>
-                        <option name="kat[]" value="15">Spłata długów</option>
-                        <option name="kat[]" value="16">Darowizna</option>
-                        <option name="kat[]" value="17">Inne wydatki</option>
-                    </select>
-                        </label><br></br>
-                    <label class="entry"><i class="icon-comment-empty"></i><input type="text" placeholder="komentarz" ></label><br></br>
-                     <button type="submit" class="entry">Zatwierdź</button>
+               <div class="col-6 mx-auto"><i class="icon-down-big"></i>Dodaj przychód
+                   <br></br>
+                   <div class="form-group">
+                       <label for="kwota">Podaj kwote</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="icon-dollar"></i></div>
+                            </div>
+                            <input type="number" step="0.1" class="form-control" id="kwota" placeholder="$">
+                        </div>
+                   </div>
+                   <div class="form-group">
+                       <label for="date">Data przychodu</label>
+                       <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="icon-calendar"></i></div>
+                            </div>
+                            <input type="date" class="form-control" id="date">
+                    </div>
+                   </div>
+                   <div class="form-group">
+                       <label for="sposobplatn">Sposob platnosci</label>
+                       <div class="input-group mb-2">                       
+                       <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="icon-wallet"></i></div>
+                        </div>
+                        <select class="form-control" id="sposobplatn">
+                          <option value="g">Gotówka</option>
+                          <option value="d">Karta debetowa</option>
+                          <option value="k">Karta kredytowa</option>
+                        </select>
+                    </div>
+                   </div>
+                   <div class="form-group">
+                       <label for="kategoria">Kategoria</label>
+                       <div class="input-group mb-2">                       
+                       <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="icon-tag"></i></div>
+                        </div>
+                        <select class="form-control" id="kategoria">
+                            <option name="kat[]" value="1">Jedzenie</option>
+                            <option name="kat[]" value="2">Mieszkanie</option>
+                            <option name="kat[]" value="3">Transport</option>
+                            <option name="kat[]" value="4">Telekomunikacja</option>
+                            <option name="kat[]" value="5">Opieka zdrowotna</option>
+                            <option name="kat[]" value="6">Ubranie</option>
+                            <option name="kat[]" value="7">Higiena</option>
+                            <option name="kat[]" value="8">Dzieci</option>
+                            <option name="kat[]" value="9">Rozrywka</option>
+                            <option name="kat[]" value="10">Wycieczka</option>
+                            <option name="kat[]" value="11">Szkolenia</option>
+                            <option name="kat[]" value="12">Książki</option>
+                            <option name="kat[]" value="13">Oszczędności</option>
+                            <option name="kat[]" value="14">Na złotą jesień, czyli emeryturę</option>
+                            <option name="kat[]" value="15">Spłata długów</option>
+                            <option name="kat[]" value="16">Darowizna</option>
+                            <option name="kat[]" value="17">Inne wydatki</option>
+                        </select>
+                    </div>
+                   </div>
+                   <div class="form-group">
+                       <label for="comment">Komentarz</label>
+                       <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="icon-comment-empty"></i></div>
+                            </div>
+                            <input type="text" class="form-control" id="comment">
+                    </div>
+                   </div>
+                   <button class="btn btn-primary btn-block" type="submit">Zatwierdz</button>
+                   
                 </div>
                
             </form>

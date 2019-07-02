@@ -16,18 +16,27 @@ and open the template in the editor.
 
     </head>
     <body>
-        <div class="container">
-            <header><a href="index.html"><img id="logo" src="banknotes-xxl.png" alt="logo" align="left">Logowanie</a></header>
-        <div class="inputblock">
-            <form action="index.html" method="post">
-                <label class="entry"><i class="icon-user"></i><input type="text" placeholder="użytkownik lub email"></label>
-                <br></br>
-                <label class="entry"><i class="icon-key"></i><input type="text" placeholder="hasło"></label>
-                <br></br>
-            </form>                
-            <form action="mainMenu.html" class="entry"><input type="submit" value="Zaloguj" /></form>
-        </div>
-        </div>
+       <header><a href="index.html"><img id="logo" src="banknotes-xxl.png" alt="logo" align="left"></a></header>
+            <div class="col-6 mx-auto">Logowanie
+                <form action="index.html" method="post">
+                    <div class="form-group">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="icon-user"></i></div>
+                            </div>
+                            <input type="text" class="form-control" id="uzytkownik" placeholder="uzytkownik lub email">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="icon-key"></i></div>
+                            </div>
+                            <input type="password" class="form-control" id="haslo" placeholder="hasło">
+                        </div>
+                    </div>                                      
+                    <a class="btn btn-primary btn-block" href="mainMenu.html" role="button"><i class="icon-login"></i> Zaloguj</a>
+                </form>
+            </div>
+
         
     </body>
 </html>

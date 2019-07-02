@@ -32,19 +32,64 @@ and open the template in the editor.
 
         </nav>
         <form action="index.html" method="post">
-                <div class="inputblock"><i class="icon-down-big"></i>Dodaj przychód
+                <div class="col-6 mx-auto"><i class="icon-down-big"></i>Dodaj przychód
                     <br></br>
-                    <label class="entry"><i class="icon-dollar"></i><input type="number"  step="0.1" placeholder="podaj kwotę"></label><br></br>
-                    <label class="entry"><i class="icon-calendar"></i><input type="date" name="today" id="today"></label><br></br>                    
-                    <label class="entry"><input type="radio" name="kat" value="w" checked> Wynagrodzenie</label>
-                    <label class="entry"><input type="radio" name="kat" value="o"> Odsetki bankowe</label><br></br>  
-                    <label class="entry"><input type="radio" name="kat" value="a"> Sprzedaż na allegro</label>
-                    <label class="entry"><input type="radio" name="kat" value="i"> Inne</label>
-                    
-                    
-                    <br></br>
-                    <label class="entry"><i class="icon-comment-empty"></i><input type="text" placeholder="komentarz" ></label><br></br>
-                    <button type="submit" class="entry">Zatwierdź</button>
+                    <div class="form-group">
+                       <label for="kwota">Podaj kwote</label>
+                       <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="icon-dollar"></i></div>
+                            </div>
+                            <input type="number" step="0.1" class="form-control" id="kwota" placeholder="podaj kwotę">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="today">Data przychodu</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="icon-calendar"></i></div>
+                            </div>
+                            <input type="date" class="form-control" id="today">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="kategoria">Kategoria przychodu</label>
+                        <div class="form-check">
+                        <input class="form-check-input" type="radio" name="kat" id="wynagrodzenie" value="w" checked>
+                        <label class="form-check-label" for="wynagrodzenie">
+                          Wynagrodzenie
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="kat" id="odsetki" value="o">
+                        <label class="form-check-label" for="odsetki">
+                          Odsetki bankowe
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="kat" id="allegro" value="a">
+                        <label class="form-check-label" for="allegro">
+                          Sprzedaz na Allegro
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="kat" id="inne" value="i">
+                        <label class="form-check-label" for="inne">
+                          Inne
+                        </label>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Komentarz</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="icon-comment-empty"></i></div>
+                            </div>
+                            <input type="text" class="form-control" id="comment">
+                    </div>
+                    </div>
+            
+                    <button class="btn btn-primary btn-block" type="submit">Zatwierdz</button>
                 </div>
                 
             </form>

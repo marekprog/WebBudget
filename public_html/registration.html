@@ -8,27 +8,50 @@ and open the template in the editor.
     <head>
         <title>Rejestracja</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet"/> 
+        <link rel="stylesheet" type="text/css" href="cssbs/bootstrap.min.css"/>      
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <link rel="stylesheet" type="text/css" href="css/fontello.css"/>
 
     </head>
     <body>
-        <header><a href="index.html"><img id="logo" src="banknotes-xxl.png" alt="logo" align="left">Rejestracja</a></header>
-        <div class="inputblock">
-            <form action="index.html" method="post">                    
-                    <label class="entry"><i class="icon-user"></i><input type="text" placeholder="nick lub imię"></label>
-                    <br></br>
-                    <label class="entry"><i class="icon-mail"></i><input type="email" placeholder="Adres e-mail"></label>
-                    <br></br>
-                    <label class="entry"><i class="icon-key"></i><input type="password" placeholder="hasło"></label>
-                    <br></br>
-                    <label class="entry"><i class="icon-key"></i><input type="password" placeholder="powtórz hasło"></label>
-                    <br></br>
-                    <button type="submit" class="entry">Zarejestruj</button>
+        <header><a href="index.html"><img id="logo" src="banknotes-xxl.png" alt="logo" align="left"></a></header>
+        <div class="col-6 mx-auto">Rejestracja
+            <form action="index.html" method="post">
+                    <div class="form-group">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="icon-user"></i></div>
+                            </div>
+                            <input type="text" class="form-control" id="uzytkownik" placeholder="nick lub imię">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="icon-mail"></i></div>
+                            </div>
+                            <input type="email" class="form-control" id="email" placeholder="Adres e-mail">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="icon-key"></i></div>
+                            </div>
+                            <input type="password" class="form-control" id="password" placeholder="hasło">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="icon-key"></i></div>
+                            </div>
+                            <input type="password" class="form-control" id="password" placeholder="powtórz hasło">
+                        </div>
+                        
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit">Zarejestruj</button>
                 
             </form>
                    
+       
         </div>
+        
     </body>
 </html>
