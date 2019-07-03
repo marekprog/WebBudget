@@ -3,7 +3,7 @@ body {
     background-color: #CBCBCB;
     margin:0 !important;
     font-family: 'Roboto Mono', monospace;
-    font-size: 10px;
+    font-size: 14px;
     color:#000000;
    
 }
@@ -163,4 +163,10 @@ section{
 aside {
     float:left;
     width:20%;
+}
+
+.col-6,.col-sm-2, .col-md-2, .col-lg-2{
+    margin-top:40px;
+    outline: 4px groove #000000;
+    outline-offset: 5px;
 }
