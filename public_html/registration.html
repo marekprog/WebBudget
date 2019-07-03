@@ -16,42 +16,49 @@ and open the template in the editor.
 
     </head>
     <body>
-        <header><a href="index.html"><img id="logo" src="banknotes-xxl.png" alt="logo" align="left"></a></header>
-        <div class="col-6 mx-auto">Rejestracja
+        <header>
+
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+                <a class="navbar-brand" href="index.html">Web Budget</a>
+            </nav>
+
+
+        </header>
+        <div class="col-6 mx-auto align-top"><br>Rejestracja
             <form action="index.html" method="post">
-                    <div class="form-group">
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><i class="icon-user"></i></div>
-                            </div>
-                            <input type="text" class="form-control" id="uzytkownik" placeholder="nick lub imię">
+                <div class="form-group">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="icon-user"></i></div>
                         </div>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><i class="icon-mail"></i></div>
-                            </div>
-                            <input type="email" class="form-control" id="email" placeholder="Adres e-mail">
-                        </div>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><i class="icon-key"></i></div>
-                            </div>
-                            <input type="password" class="form-control" id="password" placeholder="hasło">
-                        </div>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><i class="icon-key"></i></div>
-                            </div>
-                            <input type="password" class="form-control" id="password" placeholder="powtórz hasło">
-                        </div>
-                        
+                        <input type="text" class="form-control" id="uzytkownik" placeholder="nick lub imię">
                     </div>
-                    <button class="btn btn-primary btn-block" type="submit">Zarejestruj</button>
-                
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="icon-mail"></i></div>
+                        </div>
+                        <input type="email" class="form-control" id="email" placeholder="Adres e-mail">
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="icon-key"></i></div>
+                        </div>
+                        <input type="password" class="form-control" id="password" placeholder="hasło">
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="icon-key"></i></div>
+                        </div>
+                        <input type="password" class="form-control" id="password" placeholder="powtórz hasło">
+                    </div>
+
+                </div>
+                <button class="btn btn-primary btn-block" type="submit">Zarejestruj</button>
+
             </form>
-                   
-       
+
+
         </div>
-        
+
     </body>
 </html>

@@ -1,8 +1,4 @@
 
-#logo{
-    height:100%;
-}
-
 body {
     background-color: #CBCBCB;
     margin:0 !important;
@@ -19,7 +15,7 @@ header {
     height: 50px;
     padding: 20px;
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
     background-color:#BDC47E;
     
 }
@@ -74,7 +70,7 @@ header:hover{
     text-decoration:none;
 }
 nav{
-    background-color: #CBCBCB;
+    background-color: #7D8993;
     text-align: center;
     color: #000000;
 }
