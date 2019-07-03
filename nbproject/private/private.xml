@@ -5,6 +5,13 @@
         <group>
             <file>file:/home/marek/NetBeansProjects/WebBudget/public_html/style.css</file>
             <file>file:/home/marek/NetBeansProjects/WebBudget/public_html/index.html</file>
+            <file>file:/home/marek/NetBeansProjects/WebBudget/public_html/balance.html</file>
+            <file>file:/home/marek/NetBeansProjects/WebBudget/public_html/login.html</file>
+            <file>file:/home/marek/NetBeansProjects/WebBudget/public_html/mainMenu.html</file>
+            <file>file:/home/marek/NetBeansProjects/WebBudget/public_html/time.js</file>
+            <file>file:/home/marek/NetBeansProjects/WebBudget/public_html/expense.html</file>
+            <file>file:/home/marek/NetBeansProjects/WebBudget/public_html/income.html</file>
+            <file>file:/home/marek/NetBeansProjects/WebBudget/public_html/registration.html</file>
         </group>
     </open-files>
 </project-private>

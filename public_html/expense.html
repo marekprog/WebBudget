@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html lang="pl">
     <head>
         <title>Wydatek</title>
         <meta charset="UTF-8">
@@ -13,7 +13,7 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="cssbs/bootstrap.min.css"/>      
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <link rel="stylesheet" type="text/css" href="css/fontello.css"/>
-        <script type="text/javascript" src="time.js" ></script>
+        <script src="time.js" ></script>
 
     </head>
     <body onload="setToday();">
@@ -49,7 +49,7 @@ and open the template in the editor.
         </header>
         <form action="index.html" method="post">
             <div class="col-6 mx-auto"><i class="icon-down-big"></i><br>Dodaj wydatek
-                <br></br>
+                <br>
                 <div class="form-group">
                     <label for="kwota">Podaj kwotę</label>
                     <div class="input-group mb-2">
@@ -60,7 +60,7 @@ and open the template in the editor.
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="date">Data przychodu</label>
+                    <label for="today">Data przychodu</label>
                     <div class="input-group mb-2">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="icon-calendar"></i></div>
@@ -88,23 +88,23 @@ and open the template in the editor.
                             <div class="input-group-text"><i class="icon-tag"></i></div>
                         </div>
                         <select class="form-control" id="kategoria">
-                            <option name="kat[]" value="1">Jedzenie</option>
-                            <option name="kat[]" value="2">Mieszkanie</option>
-                            <option name="kat[]" value="3">Transport</option>
-                            <option name="kat[]" value="4">Telekomunikacja</option>
-                            <option name="kat[]" value="5">Opieka zdrowotna</option>
-                            <option name="kat[]" value="6">Ubranie</option>
-                            <option name="kat[]" value="7">Higiena</option>
-                            <option name="kat[]" value="8">Dzieci</option>
-                            <option name="kat[]" value="9">Rozrywka</option>
-                            <option name="kat[]" value="10">Wycieczka</option>
-                            <option name="kat[]" value="11">Szkolenia</option>
-                            <option name="kat[]" value="12">Książki</option>
-                            <option name="kat[]" value="13">Oszczędności</option>
-                            <option name="kat[]" value="14">Na złotą jesień, czyli emeryturę</option>
-                            <option name="kat[]" value="15">Spłata długów</option>
-                            <option name="kat[]" value="16">Darowizna</option>
-                            <option name="kat[]" value="17">Inne wydatki</option>
+                            <option class="kat" value="1">Jedzenie</option>
+                            <option class="kat" value="2">Mieszkanie</option>
+                            <option class="kat" value="3">Transport</option>
+                            <option class="kat" value="4">Telekomunikacja</option>
+                            <option class="kat" value="5">Opieka zdrowotna</option>
+                            <option class="kat" value="6">Ubranie</option>
+                            <option class="kat" value="7">Higiena</option>
+                            <option class="kat" value="8">Dzieci</option>
+                            <option class="kat" value="9">Rozrywka</option>
+                            <option class="kat" value="10">Wycieczka</option>
+                            <option class="kat" value="11">Szkolenia</option>
+                            <option class="kat" value="12">Książki</option>
+                            <option class="kat" value="13">Oszczędności</option>
+                            <option class="kat" value="14">Na złotą jesień, czyli emeryturę</option>
+                            <option class="kat" value="15">Spłata długów</option>
+                            <option class="kat" value="16">Darowizna</option>
+                            <option class="kat" value="17">Inne wydatki</option>
                         </select>
                     </div>
                 </div>
