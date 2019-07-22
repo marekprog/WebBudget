@@ -13,7 +13,7 @@
         <header>
 
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-                <a class="navbar-brand" href="index.html">Web Budget</a>
+                <a class="navbar-brand" href="index.php">Web Budget</a>
             </nav>
 
 
