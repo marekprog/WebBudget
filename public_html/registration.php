@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (isset($_SESSION['logged_in'])){
+    header('Location:mainMenu.php');
+    exit();
+}
 require_once 'database.php';
 
 if (isset($_POST['email']))
@@ -8,33 +12,69 @@ if (isset($_POST['email']))
     //success
     $success = true;
     //test nickname
-    $uzytkownik = $_POST['nick'];
+    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    if ((strlen($uzytkownik)<3)||(strlen($uzytkownik)>20)){
+    $r_password = $_POST['r_password'];
+    if ((strlen($username)<3)||(strlen($username)>20)){
         $success = false;
         $_SESSION['e_nick'] = "imie lub nazwa musi posiadac od 3 do 20 znakow";
     }
-    if (ctype_alnum($nick)==false)
+    if (ctype_alnum($username)==false)
     {
         $success=false;
 	$_SESSION['e_nick']="Nick może składać się tylko z liter i cyfr (bez polskich znaków)";
     }
     //check email
     $emailB = filter_var($email, FILTER_SANITIZE_EMAIL);
-    if((filter_var($emailB,FILTER_VALIDATE_EMAIL)==false)||($emailB!=email))
+    if((filter_var($emailB,FILTER_VALIDATE_EMAIL)==false)||($emailB!=$email))
     {
         $success=false;
-        $_SESSION['e_email']="Adres e-mail jest niepoprawny";
+        echo $email;
+        $_SESSION['e_email']="Adres e-mail jest niepoprawny: {$email}";
     }
+    //check pass
+    if ((strlen($password) < 4) || (strlen($password) > 20)) {
+        $success = false;
+        $_SESSION['e_pass'] = "Hasło musi posiadać od 4 do 20 znaków!";
+    }
+
+    if ($password != $r_password) {
+        $success = false;
+        $_SESSION['e_pass'] = "Podane hasła nie są identyczne!";
+    }
+
+    $pass_hash = password_hash($password, PASSWORD_DEFAULT);
+    
+    //check if user exists in db
+    $userQ=$db->prepare('SELECT id FROM public.users WHERE username=:username');
+    $userQ->bindValue(':username',$username,PDO::PARAM_STR);
+    $userQ->execute();
+    if ($userQ->rowCount()>0){
+        $success= false;
+        $_SESSION['e_nick']="Podany uzytkownik juz istnieje";
+    }
+    //check if email exists
+    $userQ=$db->prepare('SELECT id FROM public.users WHERE email=:email');
+    $userQ->bindValue(':email',$email,PDO::PARAM_STR);
+    $userQ->execute();
+    if ($userQ->rowCount()>0){
+        $success= false;
+        $_SESSION['e_email']="Podany email jest juz zajety";
+    }
+
+    
     if ($success == true) {
-        $query=$db->prepare("INSERT INTO public.users VALUES ( :user, :email,:password)");
-        $query->bindValue(':user',$uzytkownik,PDO::PARAM_STR);
+        $query=$db->prepare("INSERT INTO public.users VALUES ( :username, :email,:password)");
+        $query->bindValue(':username',$username,PDO::PARAM_STR);
         $query->bindValue(':email',$email,PDO::PARAM_STR);
-        $query->bindValue(':password',$password,PDO::PARAM_STR);
+        $query->bindValue(':password',$pass_hash,PDO::PARAM_STR);
         $query->execute();
-        exit();
+        header('Location:login.php');
+        
+        //exit();
     }
+    
 }
 ?>
 <!DOCTYPE html>
@@ -67,12 +107,6 @@ and open the template in the editor.
         <div class="col-6 mx-auto align-top">Rejestracja
             <form method="post">
                 <div class="form-group">
-                    <div class="input-group mb-2">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="icon-user"></i></div>
-                        </div>
-                        <input type="text" class="form-control" id="uzytkownik" name="nick" placeholder="nick lub imię">
-                    </div>
                     <?php
 			if (isset($_SESSION['e_nick']))
 			{
@@ -82,15 +116,28 @@ and open the template in the editor.
                     ?>
                     <div class="input-group mb-2">
                         <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="icon-mail"></i></div>
+                            <div class="input-group-text"><i class="icon-user"></i></div>
                         </div>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Adres e-mail">
+                        <input type="text" class="form-control" id="uzytkownik" name="username" placeholder="nick lub imię">
                     </div>
                     <?php
 			if (isset($_SESSION['e_email']))
 			{
 				echo '<div class="error">'.$_SESSION['e_email'].'</div>';
 				unset($_SESSION['e_email']);
+			}
+                    ?>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="icon-mail"></i></div>
+                        </div>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Adres e-mail">
+                    </div>
+                    <?php
+			if (isset($_SESSION['e_pass']))
+			{
+				echo '<div class="error">'.$_SESSION['e_pass'].'</div>';
+				unset($_SESSION['e_pass']);
 			}
                     ?>
                     <div class="input-group mb-2">
@@ -103,8 +150,9 @@ and open the template in the editor.
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="icon-key"></i></div>
                         </div>
-                        <input type="password" class="form-control" placeholder="powtórz hasło">
+                        <input type="password" class="form-control" name="r_password" placeholder="powtórz hasło">
                     </div>
+                    
 
                 </div>
                 <button class="btn btn-primary btn-block" type="submit" name="signup">Zarejestruj</button>

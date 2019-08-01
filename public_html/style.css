@@ -170,3 +170,6 @@ aside {
     outline: 4px groove #000000;
     outline-offset: 5px;
 }
+.loginflag {
+    font-size: 12px;
+}

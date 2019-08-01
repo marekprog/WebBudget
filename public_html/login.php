@@ -1,3 +1,38 @@
+<?php
+session_start();
+if (isset($_SESSION['logged_in'])){
+    header('Location:mainMenu.php');
+    exit();
+}
+require_once 'database.php';
+
+    if(isset($_POST['login'])){
+        $login=filter_input(INPUT_POST,'login');
+        $password= filter_input(INPUT_POST, 'pass');
+        $userQ=$db->prepare('SELECT id,password,username FROM public.users WHERE username=:login');
+        $userQ->bindValue(':login',$login,PDO::PARAM_STR);
+        $userQ->execute();
+                
+        $userData=$userQ->fetch();
+        if ($userData && password_verify($password,$userData['password'])){
+            $_SESSION['logged_in']=$userData;
+            header('Location:mainMenu.php');
+            unset($_SESSION['login_failure']);
+            exit();
+                        
+        } else {
+            $_SESSION['login_failure']=true;
+            header('Location:login.php');
+            exit();
+            
+        }
+        exit();
+        echo $userData['id'];
+    }
+    
+    
+?>
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -25,22 +60,22 @@ and open the template in the editor.
 
         </header>
         <div class="col-6 mx-auto">Logowanie
-            <form action="index.php" method="post">
+            <form method="post">
                 <div class="form-group">
                     <div class="input-group mb-2">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="icon-user"></i></div>
                         </div>
-                        <input type="text" class="form-control" id="uzytkownik" placeholder="użytkownik lub email">
+                        <input type="text" class="form-control" id="uzytkownik" name="login" placeholder="użytkownik lub email">
                     </div>
                     <div class="input-group mb-2">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="icon-key"></i></div>
                         </div>
-                        <input type="password" class="form-control" id="haslo" placeholder="hasło">
+                        <input type="password" class="form-control" id="haslo" name="pass" placeholder="hasło">
                     </div>
                 </div>                                      
-                <a class="btn btn-primary btn-block" href="mainMenu.php" role="button"><i class="icon-login"></i> Zaloguj</a>
+                <button class="btn btn-primary btn-block" type="submit" role="button" ><i class="icon-login"></i> Zaloguj</button>
             </form>
         </div>
 

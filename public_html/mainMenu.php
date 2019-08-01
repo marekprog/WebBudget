@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['logged_in'])){
+    header('Location:index.php');
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -19,7 +27,7 @@ and open the template in the editor.
         <header>
 
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-                <a class="navbar-brand" href="index.php">Web Budget</a>
+                <a class="navbar-brand" href="mainMenu.php">Web Budget</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu"
                         aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -36,13 +44,14 @@ and open the template in the editor.
                             <a class="nav-link" href="balance.php"><i class="icon-doc-text"></i> Przeglądaj bilans</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php"><i class="icon-logout"></i>Wyloguj się</a>
+                            <a class="nav-link" href="logout.php"><i class="icon-logout"></i>Wyloguj się</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="icon-cog"></i> Ustawienia</a>
                         </li>
                     </ul>
                 </div>
+                <div class="loginflag"><?php echo $_SESSION['logged_in']['username'] ?><i class="icon-user"></i></div>
             </nav>
 
         </header>
@@ -50,7 +59,7 @@ and open the template in the editor.
             <div class="full-bg-img">
                 <div class="mask rgba-purple-light flex-center">
                     <div class="container text-center fadeInUp" style="padding-top: 15%">
-                        <h1>Witaj Użytkownik! Co chcesz teraz zrobić?</h1>
+                        <h1>Witaj <?php echo $_SESSION['logged_in']['username'] ?>! Co chcesz teraz zrobić?</h1>
                     </div>
                 </div>
             </div>
