@@ -28,8 +28,8 @@
           <br>
           <h5>Witaj w Web Budget!</h5>
           <div class="actionpanel">
-                    <a class="btn btn-primary btn-block" href="registration.html" role="button"><i class="icon-user-plus"></i> Rejestracja</a>
-                    <a class="btn btn-secondary btn-block" href="login.html" role="button"><i class="icon-login"></i> Logowanie</a>
+              <a class="btn btn-primary btn-block" href="registration.php" role="button"><i class="icon-user-plus"></i> Rejestracja</a>
+              <a class="btn btn-secondary btn-block" href="login.php" role="button"><i class="icon-login"></i> Logowanie</a>
           </div>
           
         </div>

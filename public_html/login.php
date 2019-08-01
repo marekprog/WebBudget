@@ -19,13 +19,13 @@ and open the template in the editor.
         <header>
 
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-                <a class="navbar-brand" href="index.php.html">Web Budget</a>
+                <a class="navbar-brand" href="index.php">Web Budget</a>
             </nav>
 
 
         </header>
         <div class="col-6 mx-auto">Logowanie
-            <form action="index.php.html" method="post">
+            <form action="index.php" method="post">
                 <div class="form-group">
                     <div class="input-group mb-2">
                         <div class="input-group-prepend">
@@ -40,7 +40,7 @@ and open the template in the editor.
                         <input type="password" class="form-control" id="haslo" placeholder="hasło">
                     </div>
                 </div>                                      
-                <a class="btn btn-primary btn-block" href="mainMenu.html" role="button"><i class="icon-login"></i> Zaloguj</a>
+                <a class="btn btn-primary btn-block" href="mainMenu.php" role="button"><i class="icon-login"></i> Zaloguj</a>
             </form>
         </div>
 

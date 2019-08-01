@@ -20,7 +20,7 @@ and open the template in the editor.
         <header>
 
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-                <a class="navbar-brand" href="index.php.html">Web Budget</a>
+                <a class="navbar-brand" href="index.php">Web Budget</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu"
                         aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -28,16 +28,16 @@ and open the template in the editor.
                 <div class="collapse navbar-collapse" id="mainMenu">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="income.html"><i class="icon-down-big"></i>Dodaj przychód</a>
+                            <a class="nav-link" href="income.php"><i class="icon-down-big"></i>Dodaj przychód</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="expense.html"><i class="icon-up-big"></i> Dodaj wydatek</a>
+                            <a class="nav-link" href="expense.php"><i class="icon-up-big"></i> Dodaj wydatek</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="balance.html"><i class="icon-doc-text"></i> Przeglądaj bilans</a>
+                            <a class="nav-link" href="balance.php"><i class="icon-doc-text"></i> Przeglądaj bilans</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php.html"><i class="icon-logout"></i>Wyloguj się</a>
+                            <a class="nav-link" href="index.php"><i class="icon-logout"></i>Wyloguj się</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="icon-cog"></i> Ustawienia</a>
