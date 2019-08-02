@@ -1,9 +1,83 @@
 <?php
 session_start();
+require_once 'database.php';
+
 if (!isset($_SESSION['logged_in'])){
     header('Location:index.php');
     exit();
 }
+if (isset($_POST['balance'])){
+    $balancerange = $_POST['balance'];
+    if ($balancerange=="bm"){
+        //obecny miesiac
+        $date_from=date("Y-m-01");
+        $date_to=date("Y-m-d");
+    }
+    else if ($balancerange=="pm"){
+        //poprzedni miesiac
+        $date = date_create();
+        //$date_to= mktime(0, 0, 0, date("m")-1, date("d"),   date("Y"));
+        $date_from=date('Y-m-d', strtotime("first day of previous month"));
+        $date_to=date('Y-m-d', strtotime("last day of previous month"));
+        
+    }
+    else if ($balancerange=="br"){
+        //biezacy rok
+        $date_from=date("Y-01-01");
+        $date_to=date("Y-m-d");
+    }
+    else if ($balancerange=="ns"){
+        //niestandardowe
+        $date_from=$_POST['date_from'];
+        $date_to=$_POST['date_to'];
+    }
+    //select data
+    //incomes
+    $queryIncome=$db->prepare("SELECT income_category_assigned_to_user_id,SUM(amount) from public.incomes where user_id=:user_id and date_of_income BETWEEN :date_from and :date_to GROUP BY income_category_assigned_to_user_id");
+    $queryIncome->bindValue(':user_id',$_SESSION['logged_in']['id'],PDO::PARAM_INT);
+    $queryIncome->bindValue(':date_from',$date_from,PDO::PARAM_STR);
+    $queryIncome->bindValue(':date_to',$date_to,PDO::PARAM_STR);
+    $queryIncome->execute();
+    $queryIncomeSum=$db->prepare("SELECT SUM(amount) from public.incomes where user_id=:user_id and date_of_income BETWEEN :date_from and :date_to");
+    $queryIncomeSum->bindValue(':user_id',$_SESSION['logged_in']['id'],PDO::PARAM_INT);
+    $queryIncomeSum->bindValue(':date_from',$date_from,PDO::PARAM_STR);
+    $queryIncomeSum->bindValue(':date_to',$date_to,PDO::PARAM_STR);
+    $queryIncomeSum->execute();
+    $incomesSumAll=$queryIncomeSum->fetchAll();
+    $incomesTable=$queryIncome->fetchAll();
+    $incomeSums=array_fill(0,4,0);
+    for ($i = 0; $i <= count($incomeSums); $i++) {
+        foreach ($incomesTable as $income){
+            if ($i==($income['income_category_assigned_to_user_id']-1))
+                $incomeSums[$i]=$income['sum'];
+        }
+
+    }
+    //incomes
+    $queryExpSum=$db->prepare("SELECT SUM(amount) from public.expenses where user_id=:user_id and date_of_expense BETWEEN :date_from and :date_to");
+    $queryExpSum->bindValue(':user_id',$_SESSION['logged_in']['id'],PDO::PARAM_INT);
+    $queryExpSum->bindValue(':date_from',$date_from,PDO::PARAM_STR);
+    $queryExpSum->bindValue(':date_to',$date_to,PDO::PARAM_STR);
+    $queryExpSum->execute();
+    $expSumAll=$queryExpSum->fetchAll();
+    $queryExp=$db->prepare("SELECT expense_category_assigned_to_user_id,SUM(amount) from public.expenses where user_id=:user_id and date_of_expense BETWEEN :date_from and :date_to GROUP BY expense_category_assigned_to_user_id");
+    $queryExp->bindValue(':user_id',$_SESSION['logged_in']['id'],PDO::PARAM_INT);
+    $queryExp->bindValue(':date_from',$date_from,PDO::PARAM_STR);
+    $queryExp->bindValue(':date_to',$date_to,PDO::PARAM_STR);
+    $queryExp->execute();
+    $expTable=$queryExp->fetchAll();
+    $expSums=array_fill(0,17,0);
+    for ($i = 0; $i <= count($expSums); $i++) {
+        foreach ($expTable as $expense){
+            if ($i==($expense['expense_category_assigned_to_user_id']-1))
+                $expSums[$i]=$expense['sum'];
+        }
+
+    }
+    //print_r($expSumAll);
+    //exit();  
+}
+
 ?>
 <!DOCTYPE html>
 <!--
@@ -57,7 +131,7 @@ and open the template in the editor.
         </header>
 
         <section>
-            <div id="incomes" class="col-sm-5 col-md-5 col-lg-5" style="display: none;">
+            <div id="incomes" class="col-sm-5 col-md-5 col-lg-5">
                 <table>
                     <thead>
                         <tr>
@@ -68,31 +142,31 @@ and open the template in the editor.
                     <tbody>
                         <tr>
                             <td>Wynagrodzenie</td>
-                            <td></td>
+                            <td><?= $incomeSums[0]?></td>
                         </tr>
                         <tr>
                             <td>Odsetki Bankowe</td>
-                            <td></td>
+                            <td><?= $incomeSums[1]?></td>
                         </tr>
                         <tr>
                             <td>Sprzedaż na allegro</td>
-                            <td></td>
+                            <td><?= $incomeSums[2]?></td>
                         </tr>
                         <tr>
                             <td>Inne</td>
-                            <td></td>
+                            <td><?= $incomeSums[3]?></td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <th>Suma</th>
-                            <th></th>
+                            <th><?=$incomesSumAll[0]['sum']?></th>
                         </tr>
                     </tfoot>
                     
                 </table>                
             </div>
-            <div id="expenses" class="col-sm-5 col-md-5 col-lg-5" style="display: none;">
+            <div id="expenses" class="col-sm-5 col-md-5 col-lg-5" >
                 <table>
                     <thead>
                         <tr>
@@ -103,91 +177,92 @@ and open the template in the editor.
                     <tbody>
                         <tr>
                             <td>Jedzenie</td>
-                            <td></td>
+                            <td><?= $expSums[0]?></td>
                         </tr>
                         <tr>
                             <td>Mieszkanie</td>
-                            <td></td>
+                            <td><?= $expSums[1]?></td>
                         </tr>
                         <tr>
                             <td>Transport</td>
-                            <td></td>
+                            <td><?= $expSums[2]?></td>
                         </tr>
                         <tr>
                             <td>Telekomunikacja</td>
-                            <td></td>
+                            <td><?= $expSums[3]?></td>
                         </tr>
                         <tr>
                             <td>Opieka zdrowotna</td>
-                            <td></td>
+                            <td><?= $expSums[4]?></td>
                         </tr>
                         <tr>
                             <td>Ubranie</td>
-                            <td></td>
+                            <td><?= $expSums[5]?></td>
                         </tr>
                         <tr>
                             <td>Higiena</td>
-                            <td></td>
+                            <td><?= $expSums[6]?></td>
                         </tr>
                         <tr>
                             <td>Dzieci</td>
-                            <td></td>
+                            <td><?= $expSums[7]?></td>
                         </tr>
                         <tr>
                             <td>Rozrywka</td>
-                            <td></td>
+                            <td><?= $expSums[8]?></td>
                         </tr>
                         <tr>
                             <td>Wycieczka</td>
-                            <td></td>
+                            <td><?= $expSums[9]?></td>
                         </tr>
                         <tr>
                             <td>Szkolenia</td>
-                            <td></td>
+                            <td><?= $expSums[10]?></td>
                         </tr>
                         <tr>
                             <td>Książki</td>
-                            <td></td>
+                            <td><?= $expSums[11]?></td>
                         </tr>
                         <tr>
                             <td>Oszczędności</td>
-                            <td></td>
+                            <td><?= $expSums[12]?></td>
                         </tr>
                         <tr>
                             <td>Na złotą jesień, czyli emeryturę</td>
-                            <td></td>
+                            <td><?= $expSums[13]?></td>
                         </tr>
                         <tr>
                             <td>Spłata długów</td>
-                            <td></td>
+                            <td><?= $expSums[14]?></td>
                         </tr>
                         <tr>
                             <td>Darowizna</td>
-                            <td></td>
+                            <td><?= $expSums[15]?></td>
                         </tr>
                         <tr>
                             <td>Inne wydatki</td>
-                            <td></td>
+                            <td><?= $expSums[16]?></td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <th>Suma</th>
-                            <th></th>
+                            <th><?=$expSumAll[0]['sum']?></th>
                         </tr>
                     </tfoot>
                     
                 </table>
             </div>
         </section>
+        <form method="post">
         <aside class="col-sm-2 col-md-2 col-lg-2 float-md-right">
             <div class="form-group">
-                <label for="balanceRange">Sposob płatności</label>
+                <label for="balanceRange">Wybierz zakres dat</label>
                 <div class="input-group input-group-sm">                       
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="icon-wallet"></i></div>
                     </div>
-                    <select class="form-control form-control-sm" id="balanceRange">
+                    <select class="form-control form-control-sm" id="balanceRange" name="balance">
                         <option value="bm" selected="selected">Bieżący miesiąc</option>
                         <option value="pm">Poprzedni miesiąc</option>
                         <option value="br">Bieżący rok</option>
@@ -206,18 +281,19 @@ and open the template in the editor.
                             </button>
                         </div>
                         <div class="modal-body">
-                            <label >Początek<input type="date" name="today" ></label>
-                            <label >Koniec<input type="date" name="today" id="today"></label>
+                            <label >Początek<input type="date" name="date_from" ></label>
+                            <label >Koniec<input type="date" name="date_to" id="today"></label>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cofnij</button>
-                            <button type="button" class="btn btn-primary">Zapisz zmiany</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                           
                         </div>
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary btn-block" id="showBalance" onclick="showDiv()">Zatwierdź</button>      
+            <button class="btn btn-primary btn-block" id="showBalance" onclick="showDiv()" type="submit" >Zatwierdź</button>      
         </aside>
+        </form>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="jsbs/bootstrap.min.js"></script>            
