@@ -70,8 +70,49 @@ if (isset($_POST['email']))
         $query->bindValue(':email',$email,PDO::PARAM_STR);
         $query->bindValue(':password',$pass_hash,PDO::PARAM_STR);
         $query->execute();
-        header('Location:login.php');
         
+        //get user id
+        $qgetUserId=$db->prepare("SELECT id from public.users WHERE username=:username and  email=:email");
+        $qgetUserId->bindValue(':username',$username,PDO::PARAM_STR);
+        $qgetUserId->bindValue(':email',$email,PDO::PARAM_STR);
+        $qgetUserId->execute();
+        $UserId=$qgetUserId->fetch();
+        
+        
+       //copy incomes
+        $qgetCopyIncomes=$db->prepare("SELECT * from public.incomes_category_default");
+        $qgetCopyIncomes->execute();
+        $copyIncomes=$qgetCopyIncomes->fetchAll();
+        foreach ($copyIncomes as $income){
+             $qinsertIncome=$db->prepare("INSERT INTO public.incomes_category_assigned_to_users VALUES ( :user_id, :name,:id)");
+             $qinsertIncome->bindValue(':user_id',$UserId[0],PDO::PARAM_INT);
+             $qinsertIncome->bindValue(':name',$income['name'],PDO::PARAM_STR);
+             $qinsertIncome->bindValue(':id',$income['id'],PDO::PARAM_INT);
+             $qinsertIncome->execute();              
+        }
+        //copy expenses
+        $qgetCopyExp=$db->prepare("SELECT * from public.expenses_category_default");
+        $qgetCopyExp->execute();
+        $copyExp=$qgetCopyExp->fetchAll();
+        foreach ($copyExp as $exp){
+             $qinsertExp=$db->prepare("INSERT INTO public.expenses_category_assigned_to_users VALUES ( :user_id, :name,:id)");
+             $qinsertExp->bindValue(':user_id',$UserId[0],PDO::PARAM_INT);
+             $qinsertExp->bindValue(':name',$exp['name'],PDO::PARAM_STR);
+             $qinsertExp->bindValue(':id',$exp['id'],PDO::PARAM_INT);
+             $qinsertExp->execute();              
+        }
+        //copy payment methods
+        $qgetCopyPay=$db->prepare("SELECT * from public.payment_methods_default");
+        $qgetCopyPay->execute();
+        $copyPay=$qgetCopyPay->fetchAll();
+        foreach ($copyPay as $pay){
+             $qinsertPay=$db->prepare("INSERT INTO public.payment_methods_assigned_to_users VALUES ( :user_id, :name,:id)");
+             $qinsertPay->bindValue(':user_id',$UserId[0],PDO::PARAM_INT);
+             $qinsertPay->bindValue(':name',$pay['name'],PDO::PARAM_STR);
+             $qinsertPay->bindValue(':id',$pay['id'],PDO::PARAM_INT);
+             $qinsertPay->execute();              
+        }
+        header('Location:login.php');
         //exit();
     }
     
