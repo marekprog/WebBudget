@@ -31,6 +31,12 @@ if (isset($_POST['balance'])){
         $date_from=$_POST['date_from'];
         $date_to=$_POST['date_to'];
     }
+
+}
+if (!isset($_POST['balance'])){
+    $date_from=date("Y-m-01");
+    $date_to=date("Y-m-d");
+}
     //select data
     //incomes
     $queryIncome=$db->prepare("SELECT income_category_assigned_to_user_id,SUM(amount) from public.incomes where user_id=:user_id and date_of_income BETWEEN :date_from and :date_to GROUP BY income_category_assigned_to_user_id");
@@ -76,7 +82,7 @@ if (isset($_POST['balance'])){
     }
     //print_r($expSumAll);
     //exit();  
-}
+    
 
 ?>
 <!DOCTYPE html>
@@ -140,22 +146,18 @@ and open the template in the editor.
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Wynagrodzenie</td>
-                            <td><?= $incomeSums[0]?></td>
-                        </tr>
-                        <tr>
-                            <td>Odsetki Bankowe</td>
-                            <td><?= $incomeSums[1]?></td>
-                        </tr>
-                        <tr>
-                            <td>Sprzedaż na allegro</td>
-                            <td><?= $incomeSums[2]?></td>
-                        </tr>
-                        <tr>
-                            <td>Inne</td>
-                            <td><?= $incomeSums[3]?></td>
-                        </tr>
+                        <?php if($incomeSums[0]!=0){
+                            echo "<tr><td>Wynagrodzenie</td><td>".$incomeSums[0]."</td></tr>";
+                        } ?>  
+                        <?php if($incomeSums[1]!=0){
+                            echo "<tr><td>Odsetki Bankowe</td><td>".$incomeSums[1]."</td></tr>";
+                        } ?> 
+                        <?php if($incomeSums[2]!=0){
+                            echo "<tr><td>Sprzedaż na allegro</td><td>".$incomeSums[2]."</td></tr>";
+                        } ?>
+                        <?php if($incomeSums[3]!=0){
+                            echo "<tr><td>Inne</td><td>".$incomeSums[3]."</td></tr>";
+                        } ?>                         
                     </tbody>
                     <tfoot>
                         <tr>
@@ -175,74 +177,57 @@ and open the template in the editor.
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Jedzenie</td>
-                            <td><?= $expSums[0]?></td>
-                        </tr>
-                        <tr>
-                            <td>Mieszkanie</td>
-                            <td><?= $expSums[1]?></td>
-                        </tr>
-                        <tr>
-                            <td>Transport</td>
-                            <td><?= $expSums[2]?></td>
-                        </tr>
-                        <tr>
-                            <td>Telekomunikacja</td>
-                            <td><?= $expSums[3]?></td>
-                        </tr>
-                        <tr>
-                            <td>Opieka zdrowotna</td>
-                            <td><?= $expSums[4]?></td>
-                        </tr>
-                        <tr>
-                            <td>Ubranie</td>
-                            <td><?= $expSums[5]?></td>
-                        </tr>
-                        <tr>
-                            <td>Higiena</td>
-                            <td><?= $expSums[6]?></td>
-                        </tr>
-                        <tr>
-                            <td>Dzieci</td>
-                            <td><?= $expSums[7]?></td>
-                        </tr>
-                        <tr>
-                            <td>Rozrywka</td>
-                            <td><?= $expSums[8]?></td>
-                        </tr>
-                        <tr>
-                            <td>Wycieczka</td>
-                            <td><?= $expSums[9]?></td>
-                        </tr>
-                        <tr>
-                            <td>Szkolenia</td>
-                            <td><?= $expSums[10]?></td>
-                        </tr>
-                        <tr>
-                            <td>Książki</td>
-                            <td><?= $expSums[11]?></td>
-                        </tr>
-                        <tr>
-                            <td>Oszczędności</td>
-                            <td><?= $expSums[12]?></td>
-                        </tr>
-                        <tr>
-                            <td>Na złotą jesień, czyli emeryturę</td>
-                            <td><?= $expSums[13]?></td>
-                        </tr>
-                        <tr>
-                            <td>Spłata długów</td>
-                            <td><?= $expSums[14]?></td>
-                        </tr>
-                        <tr>
-                            <td>Darowizna</td>
-                            <td><?= $expSums[15]?></td>
-                        </tr>
-                        <tr>
-                            <td>Inne wydatki</td>
-                            <td><?= $expSums[16]?></td>
-                        </tr>
+                        <?php if($expSums[0]!=0){
+                            echo "<tr><td>Jedzenie</td><td>".$expSums[0]."</td></tr>";
+                        } ?>
+                        <?php if($expSums[1]!=0){
+                            echo "<tr><td>Mieszkanie</td><td>".$expSums[1]."</td></tr>";
+                        } ?>
+                        <?php if($expSums[2]!=0){
+                            echo "<tr><td>Transport</td><td>".$expSums[2]."</td></tr>";
+                        } ?>
+                        <?php if($expSums[3]!=0){
+                            echo "<tr><td>Telekomunikacja</td><td>".$expSums[3]."</td></tr>";
+                        } ?>
+                        <?php if($expSums[4]!=0){
+                            echo "<tr><td>Opieka zdrowotna</td><td>".$expSums[4]."</td></tr>";
+                        } ?>
+                        <?php if($expSums[5]!=0){
+                            echo "<tr><td>Ubranie</td><td>".$expSums[5]."</td></tr>";
+                        } ?>
+                        <?php if($expSums[6]!=0){
+                            echo "<tr><td>Higiena</td><td>".$expSums[6]."</td></tr>";
+                        } ?>
+                        <?php if($expSums[7]!=0){
+                            echo "<tr><td>Dzieci</td><td>".$expSums[7]."</td></tr>";
+                        } ?>
+                        <?php if($expSums[8]!=0){
+                            echo "<tr><td>Rozrywka</td><td>".$expSums[8]."</td></tr>";
+                        } ?>
+                        <?php if($expSums[9]!=0){
+                            echo "<tr><td>Wycieczka</td><td>".$expSums[9]."</td></tr>";
+                        } ?>
+                        <?php if($expSums[10]!=0){
+                            echo "<tr><td>Szkolenia</td><td>".$expSums[10]."</td></tr>";
+                        } ?>
+                        <?php if($expSums[11]!=0){
+                            echo "<tr><td>Książki</td><td>".$expSums[11]."</td></tr>";
+                        } ?>
+                        <?php if($expSums[12]!=0){
+                            echo "<tr><td>Oszczędności</td><td>".$expSums[12]."</td></tr>";
+                        } ?>
+                        <?php if($expSums[13]!=0){
+                            echo "<tr><td>Na złotą jesień, czyli emeryturę</td><td>".$expSums[13]."</td></tr>";
+                        } ?>
+                        <?php if($expSums[14]!=0){
+                            echo "<tr><td>Spłata długów</td><td>".$expSums[14]."</td></tr>";
+                        } ?>
+                        <?php if($expSums[15]!=0){
+                            echo "<tr><td>Darowizna</td><td>".$expSums[15]."</td></tr>";
+                        } ?>
+                        <?php if($expSums[16]!=0){
+                            echo "<tr><td>Inne wydatki</td><td>".$expSums[16]."</td></tr>";
+                        } ?>             
                     </tbody>
                     <tfoot>
                         <tr>

@@ -103,7 +103,7 @@ and open the template in the editor.
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="icon-dollar"></i></div>
                         </div>
-                        <input type="number" step="0.1" class="form-control" id="kwota" name="amount" placeholder="$">
+                        <input type="number" step="0.01" class="form-control" id="kwota" name="amount" placeholder="$">
                     </div>
                 </div>
                 <div class="form-group">
