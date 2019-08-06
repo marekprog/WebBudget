@@ -101,9 +101,13 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <link rel="stylesheet" type="text/css" href="css/fontello.css"/>
         <script src="time.js" ></script>
+        <script src="jquery-3.4.1.min.js"></script>
+        <script src="modal.js"></script>
+        
 
     </head>
     <body onload="setToday();">
+        
         <header>
 
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
@@ -243,7 +247,7 @@ and open the template in the editor.
         <aside class="col-sm-2 col-md-2 col-lg-2 float-md-right">
             <div class="form-group">
                 <label for="balanceRange">Wybierz zakres dat</label>
-                <div class="input-group input-group-sm">                       
+                <div class="input-group input-group-sm dropdown">                       
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="icon-wallet"></i></div>
                     </div>
@@ -251,10 +255,13 @@ and open the template in the editor.
                         <option value="bm" selected="selected">Bieżący miesiąc</option>
                         <option value="pm">Poprzedni miesiąc</option>
                         <option value="br">Bieżący rok</option>
-                        <option value="ns" class="btn btn-primary" data-toggle="modal" data-target="#niestandardoweModal">niestandardowe</option>
+                        <option value="ns" class="btn btn-primary" data-toggle="modal" >Niestandardowe</option>
                     </select>
+                    
+    
                 </div>
             </div>
+           
 
             <div class="modal fade" id="niestandardoweModal" tabindex="-1" role="dialog" aria-labelledby="zakresDat" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -276,6 +283,7 @@ and open the template in the editor.
                     </div>
                 </div>
             </div>
+
             <button class="btn btn-primary btn-block" id="showBalance" onclick="showDiv()" type="submit" >Zatwierdź</button>      
         </aside>
         </form>

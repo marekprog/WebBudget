@@ -173,3 +173,6 @@ aside {
 .loginflag {
     font-size: 12px;
 }
+.modal-dialog modal {
+    display:block;
+}
